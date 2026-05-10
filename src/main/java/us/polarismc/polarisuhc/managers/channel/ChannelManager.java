@@ -12,7 +12,9 @@ import us.polarismc.polarisuhc.events.UHCDeathEvent;
 import us.polarismc.polarisuhc.managers.player.UHCPlayer;
 import us.polarismc.polarisuhc.managers.team.UHCTeam;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class ChannelManager implements Listener {
     private final Main plugin;

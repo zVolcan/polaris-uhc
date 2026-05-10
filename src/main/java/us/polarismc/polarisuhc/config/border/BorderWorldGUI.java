@@ -9,8 +9,6 @@ import org.bukkit.entity.Player;
 import us.polarismc.polarisuhc.Main;
 import us.polarismc.polarisuhc.managers.uhc.UHCGUI;
 
-import java.util.stream.IntStream;
-
 public class BorderWorldGUI extends FastInv {
     private final Main plugin;
     private final Player player;

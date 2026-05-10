@@ -9,7 +9,6 @@ import us.polarismc.polarisuhc.Main;
 import us.polarismc.polarisuhc.managers.uhc.UHCGUI;
 
 import java.util.function.Consumer;
-import java.util.stream.IntStream;
 
 public class CustomCraftsGUI extends FastInv {
 

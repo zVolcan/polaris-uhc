@@ -10,7 +10,8 @@ import org.bukkit.potion.PotionEffectType;
 import us.polarismc.polarisuhc.Main;
 import us.polarismc.polarisuhc.managers.uhc.UHCState;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class PreStartService {
     private final Main plugin;

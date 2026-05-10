@@ -6,11 +6,11 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionType;
 import us.polarismc.polarisuhc.Main;
+import us.polarismc.polarisuhc.config.border.BorderWorldGUI;
 import us.polarismc.polarisuhc.config.customcrafts.CustomCraftsGUI;
 import us.polarismc.polarisuhc.config.duration.DurationRatesGUI;
 import us.polarismc.polarisuhc.config.potion.PotionsGUI;
 import us.polarismc.polarisuhc.config.toggle.ToggleGUI;
-import us.polarismc.polarisuhc.config.border.BorderWorldGUI;
 
 public class UHCGUI extends FastInv {
     public UHCGUI(Player player, Main plugin) {

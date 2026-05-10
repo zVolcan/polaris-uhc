@@ -1,7 +1,9 @@
 package us.polarismc.polarisuhc.managers.team.commands;
 
 import org.bukkit.Bukkit;
-import org.bukkit.command.*;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import us.polarismc.polarisuhc.Main;

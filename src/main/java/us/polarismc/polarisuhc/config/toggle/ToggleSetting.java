@@ -1,8 +1,8 @@
 package us.polarismc.polarisuhc.config.toggle;
 
 import lombok.Getter;
-import org.bukkit.Material;
 import me.putindeer.api.util.builder.ItemBuilder;
+import org.bukkit.Material;
 import us.polarismc.polarisuhc.Main;
 import us.polarismc.polarisuhc.config.toggle.handlers.*;
 

@@ -3,7 +3,9 @@ package us.polarismc.polarisuhc.managers.scenario;
 import org.bukkit.command.CommandSender;
 import us.polarismc.polarisuhc.Main;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ScenarioManager {
     private final Map<ScenarioType, BaseScenario> scenarios = new HashMap<>();

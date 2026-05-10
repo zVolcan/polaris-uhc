@@ -2,17 +2,17 @@ package us.polarismc.polarisuhc.managers.uhc;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.bukkit.*;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import us.polarismc.polarisuhc.Main;
 import us.polarismc.polarisuhc.config.border.BorderManager;
 import us.polarismc.polarisuhc.config.customcrafts.CustomCraftManager;
 import us.polarismc.polarisuhc.config.duration.DurationManager;
-import us.polarismc.polarisuhc.managers.info.gui.GUIManager;
 import us.polarismc.polarisuhc.config.potion.PotionManager;
 import us.polarismc.polarisuhc.config.rates.RatesManager;
 import us.polarismc.polarisuhc.config.toggle.ToggleManager;
 import us.polarismc.polarisuhc.config.world.WorldManager;
+import us.polarismc.polarisuhc.managers.info.gui.GUIManager;
 import us.polarismc.polarisuhc.managers.player.UHCPlayer;
 
 import java.util.ArrayList;

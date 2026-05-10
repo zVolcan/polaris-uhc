@@ -1,15 +1,13 @@
 package us.polarismc.polarisuhc.managers.player.commands.host.legacy;
 
-import org.bukkit.command.*;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.jetbrains.annotations.NotNull;
 import us.polarismc.polarisuhc.Main;
 import us.polarismc.polarisuhc.config.toggle.ToggleSetting;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Toggle implements TabExecutor {
     private final Main plugin;

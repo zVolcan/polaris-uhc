@@ -9,7 +9,6 @@ import us.polarismc.polarisuhc.managers.uhc.UHCGUI;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
-import java.util.stream.IntStream;
 
 public class DurationRatesGUI extends FastInv {
     private final Main plugin;

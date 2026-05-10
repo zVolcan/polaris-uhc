@@ -1,6 +1,8 @@
 package us.polarismc.polarisuhc.managers.player.commands.host.legacy;
 
-import org.bukkit.command.*;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.jetbrains.annotations.NotNull;
 import us.polarismc.polarisuhc.Main;
 import us.polarismc.polarisuhc.managers.scenario.BaseScenario;

@@ -1,16 +1,15 @@
 package us.polarismc.polarisuhc.config.toggle;
 
 import fr.mrmicky.fastinv.FastInv;
+import me.putindeer.api.util.builder.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionType;
-import me.putindeer.api.util.builder.ItemBuilder;
 import us.polarismc.polarisuhc.Main;
 import us.polarismc.polarisuhc.managers.uhc.UHCGUI;
 
 import java.util.function.Consumer;
-import java.util.stream.IntStream;
 
 public class ToggleGUI extends FastInv {
     private final Main plugin;

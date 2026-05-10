@@ -1,11 +1,11 @@
 package us.polarismc.polarisuhc.managers.game.services.util;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Keyed;
 import org.bukkit.NamespacedKey;
 import org.bukkit.advancement.Advancement;
 import org.bukkit.advancement.AdvancementProgress;
 import org.bukkit.entity.Player;
-import org.bukkit.Keyed;
 import org.bukkit.scheduler.BukkitTask;
 import us.polarismc.polarisuhc.Main;
 

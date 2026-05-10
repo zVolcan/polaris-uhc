@@ -1,11 +1,13 @@
 package us.polarismc.polarisuhc.managers.team.commands;
 
-import net.kyori.adventure.sound.Sound;
 import io.papermc.paper.registry.keys.SoundEventKeys;
+import net.kyori.adventure.sound.Sound;
 import org.bukkit.Bukkit;
-import org.bukkit.command.*;
-import org.bukkit.entity.Player;
 import org.bukkit.GameMode;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import us.polarismc.polarisuhc.Main;
 import us.polarismc.polarisuhc.managers.player.UHCPlayer;

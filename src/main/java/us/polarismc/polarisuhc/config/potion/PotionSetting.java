@@ -1,9 +1,9 @@
 package us.polarismc.polarisuhc.config.potion;
 
 import lombok.Getter;
+import me.putindeer.api.util.builder.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.potion.PotionType;
-import me.putindeer.api.util.builder.ItemBuilder;
 import us.polarismc.polarisuhc.Main;
 
 import java.util.function.BiConsumer;

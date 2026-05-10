@@ -11,7 +11,7 @@ import us.polarismc.polarisuhc.managers.game.services.util.AdvancementService;
 import us.polarismc.polarisuhc.managers.game.services.util.LateScatterService;
 import us.polarismc.polarisuhc.managers.game.services.util.LocationFinderService;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class GameFlowManager implements Listener {
     private final Main plugin;

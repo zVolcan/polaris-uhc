@@ -1,20 +1,22 @@
 package us.polarismc.polarisuhc.managers.game.services;
 
 import io.papermc.paper.registry.keys.SoundEventKeys;
-import org.bukkit.*;
+import net.kyori.adventure.sound.Sound;
+import org.bukkit.Bukkit;
+import org.bukkit.Difficulty;
+import org.bukkit.GameRules;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 import us.polarismc.polarisuhc.Main;
-
-import java.util.List;
-
-import net.kyori.adventure.sound.Sound;
 import us.polarismc.polarisuhc.config.toggle.ToggleSetting;
 import us.polarismc.polarisuhc.events.UHCPlayerStartEvent;
 import us.polarismc.polarisuhc.events.UHCStartEvent;
 import us.polarismc.polarisuhc.managers.game.timer.EventAnchor;
 import us.polarismc.polarisuhc.managers.player.UHCPlayer;
 import us.polarismc.polarisuhc.managers.uhc.UHCState;
+
+import java.util.List;
 
 public class StartService {
     private final Main plugin;

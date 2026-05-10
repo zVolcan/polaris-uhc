@@ -7,11 +7,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import us.polarismc.polarisuhc.Main;
-import us.polarismc.polarisuhc.managers.player.UHCPlayer;
-import us.polarismc.polarisuhc.managers.team.UHCTeam;
+import us.polarismc.polarisuhc.managers.channel.ChannelKey;
 import us.polarismc.polarisuhc.managers.channel.GlobalChannel;
 import us.polarismc.polarisuhc.managers.channel.TeamChannel;
-import us.polarismc.polarisuhc.managers.channel.ChannelKey;
+import us.polarismc.polarisuhc.managers.player.UHCPlayer;
+import us.polarismc.polarisuhc.managers.team.UHCTeam;
 
 import java.util.Objects;
 

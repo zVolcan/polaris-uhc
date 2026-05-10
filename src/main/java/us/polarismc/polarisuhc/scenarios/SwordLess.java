@@ -1,6 +1,5 @@
 package us.polarismc.polarisuhc.scenarios;
 
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

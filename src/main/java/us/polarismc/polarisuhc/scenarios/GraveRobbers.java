@@ -1,12 +1,10 @@
 package us.polarismc.polarisuhc.scenarios;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.EntityType;
+import org.bukkit.block.Sign;
+import org.bukkit.block.sign.Side;
+import org.bukkit.block.sign.SignSide;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import us.polarismc.polarisuhc.managers.scenario.BaseScenario;
@@ -14,12 +12,9 @@ import us.polarismc.polarisuhc.managers.scenario.Scenario;
 
 @Scenario(name = "GraveRobbers", author = "volcqnn", icon = Material.MOSSY_COBBLESTONE,
         description = "When a player dies, a grave is created at their death location with a sign showing their name.")
-public class GraveRobbersScenario extends BaseScenario {
-
+public class GraveRobbers extends BaseScenario {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
-        if (!isEnabled()) return;
-
         Location deathLoc = event.getEntity().getLocation();
         String playerName = event.getEntity().getName();
 
@@ -47,8 +42,9 @@ public class GraveRobbersScenario extends BaseScenario {
         Location signLoc = deathLoc.clone().add(0, 1, 0);
         signLoc.getBlock().setType(Material.WARPED_WALL_SIGN);
 
-        org.bukkit.block.Sign sign = (org.bukkit.block.Sign) signLoc.getBlock().getState();
-        sign.setLine(0, playerName);
-        sign.setGlowingText(true);
+        Sign sign = (org.bukkit.block.Sign) signLoc.getBlock().getState();
+        SignSide side = sign.getSide(Side.FRONT);
+        side.line(0, plugin.utils.chat(playerName));
+        side.setGlowingText(true);
     }
 }

@@ -39,6 +39,8 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        start.disable();
+        if (start != null) {
+            start.disable();
+        }
     }
 }

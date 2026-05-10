@@ -1,9 +1,13 @@
 package us.polarismc.polarisuhc.scenarios;
 
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import us.polarismc.polarisuhc.managers.scenario.BaseScenario;
 import us.polarismc.polarisuhc.managers.scenario.Scenario;
@@ -13,13 +17,19 @@ import us.polarismc.polarisuhc.managers.scenario.Scenario;
 public class SwordLessScenario extends BaseScenario {
 
     @EventHandler
-    public void onPlayerInteract(PlayerInteractEvent event) {
+    public void onPlayerInteract(EntityDamageByEntityEvent event) {
         if (!isEnabled()) return;
-        if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 
-        if (event.getItem() != null && isSword(event.getItem().getType())) {
+        if (event.getDamager() instanceof Player player && isSword(player.getInventory().getItemInMainHand().getType())) {
             event.setCancelled(true);
-            event.getPlayer().sendActionBar(Component.text("<red>Swords are disabled!"));
+            player.sendActionBar(MiniMessage.miniMessage().deserialize("<red>Swords are disabled!"));
+        }
+    }
+
+    @EventHandler
+    public void onCraftSword(CraftItemEvent event) {
+        if (event.getCurrentItem() != null && isSword(event.getCurrentItem().getType())) {
+            event.setCancelled(true);
         }
     }
 

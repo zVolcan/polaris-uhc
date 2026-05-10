@@ -1,6 +1,9 @@
+import org.bxteam.runserver.ServerType
+
 plugins {
     java
     id("com.gradleup.shadow") version "9.4.1"
+    id("org.bxteam.runserver") version "1.2.2"
 }
 
 group = "us.polarismc"
@@ -27,8 +30,10 @@ dependencies {
     implementation("org.reflections:reflections:0.10.2")
     implementation("fr.mrmicky:FastInv:v3.1.2")
     implementation("com.zaxxer:HikariCP:7.0.2")
-    implementation("com.github.putindeer:mcdev-utils:1.0.25")
+    implementation("com.github.putindeer:mcdev-utils:1.0.28")
     implementation("de.rapha149.signgui:signgui:2.5.4")
+    implementation("net.kyori:adventure-api:5.0.1")
+    implementation("net.kyori:adventure-text-minimessage:5.0.1")
 
     compileOnly("org.projectlombok:lombok:1.18.44")
     annotationProcessor("org.projectlombok:lombok:1.18.44")
@@ -56,6 +61,21 @@ sourceSets {
             srcDir("src/test/java")
         }
     }
+}
+
+tasks.runServer {
+    serverType(ServerType.PAPER)
+    serverVersion("1.21.11")
+    noGui(true)
+
+    acceptMojangEula()
+
+    downloadPlugins {
+        jenkins("https://ci.athion.net", "FastAsyncWorldEdit", Regex("Bukkit"))
+        url("https://download.luckperms.net/1581/bukkit/loader/LuckPerms-Bukkit-5.4.164.jar")
+    }
+
+    inputTask(tasks.named("shadowJar"))
 }
 
 tasks.processResources {

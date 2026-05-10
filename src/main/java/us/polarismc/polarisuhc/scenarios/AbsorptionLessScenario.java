@@ -1,8 +1,10 @@
 package us.polarismc.polarisuhc.scenarios;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.potion.PotionEffectType;
 import us.polarismc.polarisuhc.managers.scenario.BaseScenario;
 import us.polarismc.polarisuhc.managers.scenario.Scenario;
 
@@ -14,8 +16,7 @@ public class AbsorptionLessScenario extends BaseScenario {
     public void onEntityDamage(EntityDamageEvent event) {
         if (!isEnabled()) return;
         if (event.getEntity() instanceof org.bukkit.entity.Player player) {
-            // Cancel absorption effect but keep the healing
-            player.setAbsorptionAmount(0);
+            Bukkit.getScheduler().runTaskLater(plugin, () -> player.removePotionEffect(PotionEffectType.ABSORPTION), 2);
         }
     }
 }

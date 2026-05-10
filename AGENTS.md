@@ -99,3 +99,10 @@ The repo has `minecraft-plugin-development` skill installed (`.agents/skills/min
 - Keep `plugin.yml` `main` and `api-version` in sync if the main class or target version changes
 - Validate state cleanup on `onDisable` (plugin has `start.disable()`)
 - Prefer UUID over Player as map keys for persistent state
+
+## Fixes
+
+- El timembomb solo genera un cofre y no pone las cosas en el.
+- El holograma del timembomb esta mal hecho.
+- El graverobbers solo genera un cofre y no pega los bordes.
+- El cartel del graverobbers no se updatea.

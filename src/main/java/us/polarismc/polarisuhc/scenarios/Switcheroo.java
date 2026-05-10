@@ -1,7 +1,9 @@
 package us.polarismc.polarisuhc.scenarios;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.ProjectileHitEvent;
@@ -10,21 +12,19 @@ import us.polarismc.polarisuhc.managers.scenario.BaseScenario;
 import us.polarismc.polarisuhc.managers.scenario.Scenario;
 
 @Scenario(name = "Switcheroo", author = "volcqnn", icon = Material.SPECTRAL_ARROW,
-        description = "When a projectile hits a player, your positions get swapped.")
-public class SwitcherooScenario extends BaseScenario {
-
+        description = "When a projectile you shoot hits a player, your positions will be swapped.")
+public class Switcheroo extends BaseScenario {
     @EventHandler
     public void onProjectileHit(ProjectileHitEvent event) {
-        if (!isEnabled()) return;
-        if (!(event.getEntity() instanceof Projectile projectile)) return;
+        Projectile projectile = event.getEntity();
         if (event.getHitEntity() == null) return;
-        if (!(event.getHitEntity() instanceof org.bukkit.entity.Player target)) return;
+        if (!(event.getHitEntity() instanceof Player target)) return;
 
         ProjectileSource shooter = projectile.getShooter();
-        if (!(shooter instanceof org.bukkit.entity.Player shooterPlayer)) return;
+        if (!(shooter instanceof Player shooterPlayer)) return;
 
-        org.bukkit.Location targetLoc = target.getLocation();
-        org.bukkit.Location shooterLoc = shooterPlayer.getLocation();
+        Location targetLoc = target.getLocation();
+        Location shooterLoc = shooterPlayer.getLocation();
 
         target.teleport(shooterLoc);
         shooterPlayer.teleport(targetLoc);

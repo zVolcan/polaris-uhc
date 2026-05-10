@@ -24,7 +24,7 @@ import java.util.UUID;
 
 @Getter
 public class UHCTeam {
-    private final Main plugin;
+    private final Main plugin = Main.getInstance();
     private final Team team;
     private final UUID uniqueId;
 
@@ -45,7 +45,6 @@ public class UHCTeam {
     @Setter private int kills = 0;
 
     public UHCTeam(UHCPlayer leader) {
-        this.plugin = Main.getInstance();
         this.uniqueId = UUID.randomUUID();
 
         members.add(leader);

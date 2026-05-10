@@ -10,11 +10,9 @@ import us.polarismc.polarisuhc.managers.scenario.Scenario;
 
 @Scenario(name = "ShieldLess", author = "volcqnn", icon = Material.SHIELD,
         description = "You cannot use shields.")
-public class ShieldLessScenario extends BaseScenario {
-
+public class ShieldLess extends BaseScenario {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
-        if (!isEnabled()) return;
         if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 
         if (event.getItem() != null && event.getItem().getType() == Material.SHIELD) {

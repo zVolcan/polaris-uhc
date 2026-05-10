@@ -36,6 +36,13 @@ dependencies {
     compileOnly("me.clip:placeholderapi:2.12.2")
     compileOnly("com.comphenix.protocol:ProtocolLib:5.3.0")
     compileOnly("org.popcraft:chunky-common:1.4.57")
+
+    testImplementation("org.mockbukkit.mockbukkit:mockbukkit-v1.21:4.110.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.11.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.11.0")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.44")
 }
 
 sourceSets {
@@ -44,9 +51,15 @@ sourceSets {
             srcDir("src/main/resources")
         }
     }
+    test {
+        java {
+            srcDir("src/test/java")
+        }
+    }
 }
 
 tasks.processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     filesMatching(listOf("plugin.yml", "paper-plugin.yml", "config.yml", "*.yml", "*.yaml", "*.json", "*.properties")) {
         expand(project.properties)
     }
@@ -59,4 +72,8 @@ tasks.shadowJar {
 
 tasks.build {
     dependsOn(tasks.shadowJar)
+}
+
+tasks.test {
+    useJUnitPlatform()
 }

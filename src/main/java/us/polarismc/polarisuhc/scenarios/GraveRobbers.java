@@ -2,11 +2,13 @@ package us.polarismc.polarisuhc.scenarios;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Chest;
 import org.bukkit.block.Sign;
 import org.bukkit.block.sign.Side;
 import org.bukkit.block.sign.SignSide;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.inventory.ItemStack;
 import us.polarismc.polarisuhc.managers.scenario.BaseScenario;
 import us.polarismc.polarisuhc.managers.scenario.Scenario;
 
@@ -21,6 +23,12 @@ public class GraveRobbers extends BaseScenario {
         // Chest 2 blocks below
         Location graveBase = deathLoc.clone().subtract(0, 2, 0);
         graveBase.getBlock().setType(Material.CHEST);
+        Chest chest = (Chest) graveBase.getBlock().getState();
+        for (int i = 0; i < event.getDrops().size(); i++) {
+            ItemStack item = event.getDrops().get(i);
+            chest.getInventory().setItem(i, item);
+        }
+        event.getDrops().clear();
 
         // Gravel on top
         deathLoc.getBlock().setType(Material.GRAVEL);
@@ -46,5 +54,6 @@ public class GraveRobbers extends BaseScenario {
         SignSide side = sign.getSide(Side.FRONT);
         side.line(0, plugin.utils.chat(playerName));
         side.setGlowingText(true);
+        sign.update();
     }
 }

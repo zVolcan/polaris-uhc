@@ -19,6 +19,7 @@ import us.polarismc.polarisuhc.managers.player.commands.host.legacy.CreateWorld;
 import us.polarismc.polarisuhc.managers.player.commands.host.legacy.Toggle;
 import us.polarismc.polarisuhc.managers.player.commands.host.legacy.ToggleScenario;
 import us.polarismc.polarisuhc.managers.scenario.ScenarioManager;
+import us.polarismc.polarisuhc.managers.scenario.commands.ScenCommand;
 import us.polarismc.polarisuhc.managers.team.TeamManager;
 import us.polarismc.polarisuhc.managers.team.commands.*;
 import us.polarismc.polarisuhc.managers.uhc.UHCManager;
@@ -64,6 +65,7 @@ public class StartThings {
         new CreateWorld(plugin);
         new Toggle(plugin);
         new ToggleScenario(plugin);
+        new ScenCommand(plugin);
         // Team commands (uhc.managers.team)
         new BookStuff(plugin);
         new ColorTeam(plugin);

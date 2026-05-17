@@ -72,6 +72,7 @@ public class CutClean extends BaseScenario {
             case LAPIS_ORE, DEEPSLATE_LAPIS_ORE -> new ItemStack(Material.LAPIS_LAZULI, ThreadLocalRandom.current().nextInt(4, 9));
             case REDSTONE_ORE, DEEPSLATE_REDSTONE_ORE -> new ItemStack(Material.REDSTONE);
             case NETHER_QUARTZ_ORE -> new ItemStack(Material.QUARTZ);
+            case ANCIENT_DEBRIS -> new ItemStack(Material.NETHERITE_SCRAP);
             default -> null;
         };
     }
@@ -80,7 +81,8 @@ public class CutClean extends BaseScenario {
         return switch (ore) {
             // Gold-based and gem-based ores give 1.0 XP
             case GOLD_ORE, DEEPSLATE_GOLD_ORE, NETHER_GOLD_ORE,
-                 DIAMOND_ORE, DEEPSLATE_DIAMOND_ORE, EMERALD_ORE, DEEPSLATE_EMERALD_ORE -> 1;
+                 DIAMOND_ORE, DEEPSLATE_DIAMOND_ORE, EMERALD_ORE, DEEPSLATE_EMERALD_ORE,
+                 ANCIENT_DEBRIS -> 2;
             // Iron, copper, lapis, redstone, quartz give 0.7 XP (rounds to 1)
             default -> 1;
         };

@@ -18,13 +18,14 @@ public class ScenGUI extends FastInv {
         super(owner -> Bukkit.createInventory(owner, 27, plugin.utils.chat("Scenarios")));
         List<BaseScenario> enabled = plugin.scen.getEnabled();
         //int[] gridSlots = {10, 12, 14, 16, 18, 28, 30, 32, 34};
-        for (int i = 0; i < 18; i++) {
-            BaseScenario scenario = enabled.get(i);
-            ItemBuilder item = plugin.utils.ib(scenario.getIcon()).name(scenario.getDisplayName());
+        int i = 0;
+        for (BaseScenario scen : enabled) {
+            ItemBuilder item = plugin.utils.ib(scen.getIcon()).name(scen.getDisplayName());
 
             ItemStack itemScen = item.build();
-            itemScen.editMeta(meta -> meta.lore(Arrays.asList(scenario.getDescription())));
+            itemScen.editMeta(meta -> meta.lore(Arrays.asList(scen.getDescription())));
             setItem(i, itemScen);
+            i++;
         }
 
         ItemBuilder close = plugin.utils.ib(Material.BARRIER)

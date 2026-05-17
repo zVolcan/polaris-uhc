@@ -27,7 +27,7 @@ public class HasteyBoys extends BaseScenario {
     private void addEnchantments(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         meta.addEnchant(Enchantment.EFFICIENCY,3,true);
-        if (!plugin.scen.get(ScenarioType.UNBREAKABLE).isEnabled()) {
+        if (!plugin.scen.isEnabled(ScenarioType.UNBREAKABLE)) {
             meta.addEnchant(Enchantment.UNBREAKING,2,true);
         }
         item.setItemMeta(meta);

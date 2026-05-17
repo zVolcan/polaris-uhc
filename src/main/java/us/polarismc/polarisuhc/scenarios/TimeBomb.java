@@ -11,6 +11,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import us.polarismc.polarisuhc.managers.scenario.BaseScenario;
 import us.polarismc.polarisuhc.managers.scenario.Scenario;
+import us.polarismc.polarisuhc.managers.scenario.ScenarioConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,15 +22,13 @@ import java.util.concurrent.ConcurrentMap;
         description = "When a player dies, a TNT chest appears at their death location. After 30 seconds, it explodes.",
         inDevelopment = true)
 public class TimeBomb extends BaseScenario {
-    private static final int COUNTDOWN_SECONDS = 30;
-    private static final float EXPLOSION_POWER = 4.0f;
+    private int COUNTDOWN_SECONDS = 30;
+    private float EXPLOSION_POWER = 4.0f;
 
-    private int getCountdown() {
-        return plugin.getConfig().getInt("settings.timebomb.countdown", COUNTDOWN_SECONDS);
-    }
-
-    private float getExplosionPower() {
-        return (float) plugin.getConfig().getDouble("settings.timebomb.explosion-power", EXPLOSION_POWER);
+    @Override
+    protected void loadDefaults(ScenarioConfig config) {
+        COUNTDOWN_SECONDS = config.getOrDefault("countdown-seconds", 30, "The amount of seconds that pass before the chest explodes");
+        EXPLOSION_POWER = config.getOrDefault("explosion-power", 4.0f, "The explosion power of the chest");
     }
 
     private final ConcurrentMap<Location, ArmorStand> holograms = new ConcurrentHashMap<>();
@@ -68,12 +67,12 @@ public class TimeBomb extends BaseScenario {
         hologram.setGravity(false);
         hologram.setInvulnerable(true);
         hologram.setCustomNameVisible(true);
-        hologram.customName(plugin.utils.chat("<red>Explodes in " + getCountdown() + "s"));
+        hologram.customName(plugin.utils.chat("<red>Explodes in " + COUNTDOWN_SECONDS + "s"));
 
         List<Location> chestLocations = List.of(deathLoc, secondLoc);
         holograms.put(deathLoc, hologram);
 
-        plugin.utils.delay(getCountdown() * 20, () -> explode(chestLocations, hologram));
+        plugin.utils.delay(COUNTDOWN_SECONDS * 20, () -> explode(chestLocations, hologram));
     }
 
     private Location findSecondChestLocation(Location primary) {
@@ -93,7 +92,7 @@ public class TimeBomb extends BaseScenario {
         }
 
         Location center = chestLocations.getFirst();
-        center.getWorld().createExplosion(center, getExplosionPower(), false, false);
+        center.getWorld().createExplosion(center, EXPLOSION_POWER, false, false);
 
         cleanup(hologram);
     }

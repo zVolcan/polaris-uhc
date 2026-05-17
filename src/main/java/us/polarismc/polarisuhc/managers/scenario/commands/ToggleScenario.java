@@ -1,4 +1,4 @@
-package us.polarismc.polarisuhc.managers.player.commands.host.legacy;
+package us.polarismc.polarisuhc.managers.scenario.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -29,7 +29,6 @@ public class ToggleScenario implements TabExecutor {
         String scenarioName = args[0];
 
         plugin.scen.toggle(scenarioName, sender);
-
         return true;
     }
 

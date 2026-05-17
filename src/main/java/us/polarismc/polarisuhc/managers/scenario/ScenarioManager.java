@@ -1,6 +1,7 @@
 package us.polarismc.polarisuhc.managers.scenario;
 
 import org.bukkit.command.CommandSender;
+import org.jetbrains.annotations.Nullable;
 import us.polarismc.polarisuhc.Main;
 
 import java.util.HashMap;
@@ -14,6 +15,10 @@ public class ScenarioManager {
     public ScenarioManager(Main plugin) {
         this.plugin = plugin;
         loadScenarios();
+    }
+
+    public void reload() {
+        scenarios.values().forEach(BaseScenario::reloadConfig);
     }
 
     public boolean hasEnabledNetherInMeetup() {
@@ -43,11 +48,19 @@ public class ScenarioManager {
     }
 
     private void registerScenario(BaseScenario scenario, ScenarioType type) {
-        scenarios.put(type, scenario);
+        if (scenario.shouldLoad()) {
+            scenarios.put(type, scenario);
+        }
     }
 
-    public BaseScenario get(ScenarioType type) {
+    @Nullable public BaseScenario get(ScenarioType type) {
         return scenarios.get(type);
+    }
+
+    public boolean isEnabled(ScenarioType type) {
+        BaseScenario scenario = scenarios.get(type);
+        if (scenario == null) return false;
+        return scenarios.get(type).isEnabled();
     }
 
     public Map<ScenarioType, BaseScenario> getAll() {

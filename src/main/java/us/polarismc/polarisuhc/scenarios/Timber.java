@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
 import us.polarismc.polarisuhc.managers.scenario.BaseScenario;
 import us.polarismc.polarisuhc.managers.scenario.Scenario;
+import us.polarismc.polarisuhc.managers.scenario.ScenarioConfig;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -33,13 +34,15 @@ public class Timber extends BaseScenario {
         processing.remove(uuid);
     }
 
-    private int getCap() {
-        return plugin.getConfig().getInt("settings.timber.cap", 30);
+    @Override
+    protected void loadDefaults(ScenarioConfig config) {
+        breakingCap = config.getOrDefault("breaking-cap", 30, "The maximum number of blocks to break in a row.");
     }
 
+    private int breakingCap;
+
     private void breakChain(Location loc, Player player, int[] count) {
-        int CAP = getCap();
-        if (count[0] >= CAP) return;
+        if (count[0] >= breakingCap) return;
 
         Location blockLoc = loc.clone().add(0, 1, 0);
         Block block = blockLoc.getBlock();

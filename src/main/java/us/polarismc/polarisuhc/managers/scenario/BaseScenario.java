@@ -12,18 +12,29 @@ import org.bukkit.inventory.ItemStack;
 import us.polarismc.polarisuhc.Main;
 
 import java.util.Arrays;
+import java.util.Collections;
+
 
 public abstract class BaseScenario implements Listener {
     @Getter private boolean enabled = false;
     protected final Main plugin = Main.getInstance();
 
     private final Scenario annotation;
+    @Getter private ScenarioConfig config;
+    private boolean shouldLoad;
 
     protected BaseScenario() {
         this.annotation = this.getClass().getAnnotation(Scenario.class);
         if (annotation == null) {
             throw new RuntimeException("Scenario must be annotated with @Scenario: " + getClass().getSimpleName());
         }
+        initConfig();
+    }
+
+    protected void loadDefaults(ScenarioConfig config) {}
+
+    public final boolean shouldLoad() {
+        return shouldLoad;
     }
 
     public final String getName() {
@@ -155,10 +166,21 @@ public abstract class BaseScenario implements Listener {
                 plugin.utils.message(sender, "<red>" + getDisplayName() + " isn't enabled.");
                 return true;
             });
-            command.setTabCompleter((sender, cmd, alias, args) -> java.util.Collections.emptyList());
+            command.setTabCompleter((sender, cmd, alias, args) -> Collections.emptyList());
         }
     }
 
+    public void initConfig() {
+        this.config = new ScenarioConfig(plugin, getDisplayName().toLowerCase().replace(" ", "_"));
+        shouldLoad = config.getOrDefault("enabled", true);
+        loadDefaults(config);
+    }
+
+    public void reloadConfig() {
+        config.reload();
+        shouldLoad = config.getOrDefault("enabled", true);
+        loadDefaults(config);
+    }
 
     protected void onEnable() {}
     protected void onDisable() {}

@@ -80,3 +80,6 @@ commands:
   scen:
     description: Shows the active scenarios inventory
     usage: /<command>
+  reloadscenarios:
+    description: Reloads each scenario's config file.
+    permission: uhc.host

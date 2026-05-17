@@ -98,11 +98,6 @@ rates:
   glass: 40 # %
 # Default ???
 settings:
-  timebomb:
-    countdown: 30
-    explosion-power: 4.0
-  timber:
-    cap: 30
   location-finder:
     max-y: 110
     search-attempts: 200

@@ -20,7 +20,7 @@ import us.polarismc.polarisuhc.managers.player.commands.host.QuickStart;
 import us.polarismc.polarisuhc.managers.player.commands.host.WorldC;
 import us.polarismc.polarisuhc.managers.player.commands.host.legacy.CreateWorld;
 import us.polarismc.polarisuhc.managers.player.commands.host.legacy.Toggle;
-import us.polarismc.polarisuhc.managers.player.commands.host.legacy.ToggleScenario;
+import us.polarismc.polarisuhc.managers.scenario.commands.ToggleScenario;
 import us.polarismc.polarisuhc.managers.scenario.ScenarioManager;
 import us.polarismc.polarisuhc.managers.scenario.commands.ScenCommand;
 import us.polarismc.polarisuhc.managers.team.TeamManager;

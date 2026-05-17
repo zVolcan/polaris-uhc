@@ -36,9 +36,6 @@ public class RatesListener implements Listener {
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
-        Player player = event.getPlayer();
-        if (player == null) return;
-
         Material type = event.getBlock().getType();
 
         if (LEAF_TYPES.contains(type)) {

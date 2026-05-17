@@ -97,3 +97,25 @@ rates:
   apple: 2 # %
   glass: 40 # %
 # Default ???
+settings:
+  timebomb:
+    countdown: 30
+    explosion-power: 4.0
+  timber:
+    cap: 30
+  location-finder:
+    max-y: 110
+    search-attempts: 200
+  start:
+    prestart-countdown: 6
+    invulnerability-delay-ticks: 300
+  meetup:
+    invulnerability-duration-ticks: 40
+    fire-resistance-duration-ticks: 200
+  timer:
+    pvp-reminders: "3600,1800,900,600,300,60"
+    meetup-reminders: "3600,1800,900,600,300,60"
+  team:
+    default-size: 2
+    max-size: 5
+    min-size: 1

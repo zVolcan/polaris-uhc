@@ -36,9 +36,11 @@
 - `signgui` relocated to `us.polarismc.polarisuhc.signgui`
 - Other deps: `compileOnly` (Paper API, PlaceholderAPI, ProtocolLib, Chunky) — not shaded
 
-### No Tests
-- No test framework configured
-- Validate manually via Paper server test
+### Testing
+- JUnit 5.11.0 + MockBukkit 4.110.0 available
+- Test location: `src/test/java/us/polarismc/polarisuhc/`
+- Run: `./gradlew test`
+- Pattern: `MockBukkit.mock()` / `MockBukkit.load(Main.class)` / `MockBukkit.unmock()`
 
 ## Detected Stack
 

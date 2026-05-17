@@ -37,6 +37,14 @@ public class LocationFinderService {
         return findSafeScatterLocation();
     }
 
+    private int getMaxY() {
+        return plugin.getConfig().getInt("settings.location-finder.max-y", 110);
+    }
+
+    private int getSearchAttempts() {
+        return plugin.getConfig().getInt("settings.location-finder.search-attempts", 200);
+    }
+
     public Location findSafeScatterLocation() {
         boolean disabledOverworld = plugin.scen.hasDisabledOverworld();
 
@@ -46,7 +54,7 @@ public class LocationFinderService {
         int radius = (disabledOverworld ? plugin.uhc.border.getCurrentNetherBorder() : plugin.uhc.border.getCurrentBorder()) / 2;
 
 
-        for (int i = 0; i < 200; i++) {
+        for (int i = 0; i < getSearchAttempts(); i++) {
             Location loc = getScatterLocation(world, disabledOverworld, radius, false);
             if (loc != null) return loc;
         }
@@ -60,7 +68,7 @@ public class LocationFinderService {
         int z = random.nextInt(-radius, radius);
 
         if (isNether) {
-            for (int y = 20; y < 110; y++) {
+            for (int y = 20; y < getMaxY(); y++) {
                 Location loc = new Location(world, x + 0.5, y, z + 0.5);
                 if (isSafe(loc)) return loc;
             }

@@ -77,3 +77,6 @@ commands:
   teaminventory:
     description: Access a shared inventory for your team.
     aliases: ti
+  scen:
+    description: Shows the active scenarios inventory
+    usage: /<command>

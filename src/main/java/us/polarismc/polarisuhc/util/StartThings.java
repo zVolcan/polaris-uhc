@@ -5,6 +5,9 @@ import us.polarismc.polarisuhc.Main;
 import us.polarismc.polarisuhc.config.toggle.ToggleSetting;
 import us.polarismc.polarisuhc.config.toggle.handlers.NerfedStrength;
 import us.polarismc.polarisuhc.debug.*;
+import us.polarismc.polarisuhc.events.handlers.DeathHandler;
+import us.polarismc.polarisuhc.listeners.RatesListener;
+import us.polarismc.polarisuhc.listeners.WhitelistLoginListener;
 import us.polarismc.polarisuhc.managers.arena.ArenaManager;
 import us.polarismc.polarisuhc.managers.channel.ChannelManager;
 import us.polarismc.polarisuhc.managers.game.GameFlowManager;
@@ -19,6 +22,7 @@ import us.polarismc.polarisuhc.managers.player.commands.host.legacy.CreateWorld;
 import us.polarismc.polarisuhc.managers.player.commands.host.legacy.Toggle;
 import us.polarismc.polarisuhc.managers.player.commands.host.legacy.ToggleScenario;
 import us.polarismc.polarisuhc.managers.scenario.ScenarioManager;
+import us.polarismc.polarisuhc.managers.scenario.commands.ScenCommand;
 import us.polarismc.polarisuhc.managers.team.TeamManager;
 import us.polarismc.polarisuhc.managers.team.commands.*;
 import us.polarismc.polarisuhc.managers.uhc.UHCManager;
@@ -64,6 +68,7 @@ public class StartThings {
         new CreateWorld(plugin);
         new Toggle(plugin);
         new ToggleScenario(plugin);
+        new ScenCommand(plugin);
         // Team commands (uhc.managers.team)
         new BookStuff(plugin);
         new ColorTeam(plugin);
@@ -78,7 +83,9 @@ public class StartThings {
     }
 
     public void registerListeners() {
-
+        new DeathHandler(plugin);
+        new WhitelistLoginListener(plugin);
+        new RatesListener(plugin);
     }
 
     public void registerManagers() {

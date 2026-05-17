@@ -18,7 +18,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 @Scenario(name = "TimeBomb", author = "volcqnn", icon = Material.TNT,
-        description = "When a player dies, a TNT chest appears at their death location. After 30 seconds, it explodes.")
+        description = "When a player dies, a TNT chest appears at their death location. After 30 seconds, it explodes.",
+        inDevelopment = true)
 public class TimeBomb extends BaseScenario {
     private static final int COUNTDOWN_SECONDS = 30;
     private static final float EXPLOSION_POWER = 4.0f;

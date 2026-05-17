@@ -30,8 +30,8 @@ public class ScenGUI extends FastInv {
         ItemBuilder close = plugin.utils.ib(Material.BARRIER)
                         .name("<red>Close");
 
-        setItem(22, close.build());
-
+        setItem(22, close.build(), e ->
+                e.getWhoClicked().closeInventory());
         open(player);
     }
 }

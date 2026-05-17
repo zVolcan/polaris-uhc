@@ -24,6 +24,14 @@ public class TimeBomb extends BaseScenario {
     private static final int COUNTDOWN_SECONDS = 30;
     private static final float EXPLOSION_POWER = 4.0f;
 
+    private int getCountdown() {
+        return plugin.getConfig().getInt("settings.timebomb.countdown", COUNTDOWN_SECONDS);
+    }
+
+    private float getExplosionPower() {
+        return (float) plugin.getConfig().getDouble("settings.timebomb.explosion-power", EXPLOSION_POWER);
+    }
+
     private final ConcurrentMap<Location, ArmorStand> holograms = new ConcurrentHashMap<>();
 
     @EventHandler (priority = EventPriority.LOW)
@@ -60,13 +68,12 @@ public class TimeBomb extends BaseScenario {
         hologram.setGravity(false);
         hologram.setInvulnerable(true);
         hologram.setCustomNameVisible(true);
-        hologram.customName(plugin.utils.chat("<red>Explodes in " + COUNTDOWN_SECONDS + "s"));
-        hologram.setMarker(true);
+        hologram.customName(plugin.utils.chat("<red>Explodes in " + getCountdown() + "s"));
 
         List<Location> chestLocations = List.of(deathLoc, secondLoc);
         holograms.put(deathLoc, hologram);
 
-        plugin.utils.delay(COUNTDOWN_SECONDS * 20, () -> explode(chestLocations, hologram));
+        plugin.utils.delay(getCountdown() * 20, () -> explode(chestLocations, hologram));
     }
 
     private Location findSecondChestLocation(Location primary) {
@@ -86,7 +93,7 @@ public class TimeBomb extends BaseScenario {
         }
 
         Location center = chestLocations.getFirst();
-        center.getWorld().createExplosion(center, EXPLOSION_POWER, false, false);
+        center.getWorld().createExplosion(center, getExplosionPower(), false, false);
 
         cleanup(hologram);
     }

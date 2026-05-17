@@ -146,6 +146,14 @@ public class MeetupStartService {
         }
     }
 
+    private int getInvulnerabilityDurationTicks() {
+        return plugin.getConfig().getInt("settings.meetup.invulnerability-duration-ticks", 40);
+    }
+
+    private int getFireResistanceDurationTicks() {
+        return plugin.getConfig().getInt("settings.meetup.fire-resistance-duration-ticks", 200);
+    }
+
     private void teleportAllPlayersToNearestLocation(int radius, boolean isNether, boolean first) {
         plugin.uhc.getPlayingPlayers().forEach(player -> {
             if (isNether != (player.getWorld().getEnvironment() == World.Environment.NETHER)) return;
@@ -206,7 +214,7 @@ public class MeetupStartService {
 
         plugin.utils.message(player, "<aqua>You have been teleported because you were out of the border! You're invulnerable for 2 seconds.");
         player.setInvulnerable(true);
-        plugin.utils.delay(40, () -> {
+        plugin.utils.delay(getInvulnerabilityDurationTicks(), () -> {
             if (player.isOnline()) {
                 player.setInvulnerable(false);
             }
@@ -214,7 +222,7 @@ public class MeetupStartService {
 
         if (world.getEnvironment() == World.Environment.NETHER && !player.hasPotionEffect(PotionEffectType.FIRE_RESISTANCE)) {
             plugin.utils.message(player, "<aqua>You also received Fire Resistance for 10 seconds.");
-            player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 200, 0));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, getFireResistanceDurationTicks(), 0));
         }
 
         plugin.player.teleport(player, loc);

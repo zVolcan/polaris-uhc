@@ -6,6 +6,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import us.polarismc.polarisuhc.Main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GameTimer extends BukkitRunnable {
@@ -20,13 +21,34 @@ public class GameTimer extends BukkitRunnable {
 
     @Getter private String formatted;
 
-    private final int[] pvpReminders = { 60*60, 30*60, 15*60, 10*60, 5*60, 60 };
-    private final int[] meetupReminders = { 60*60, 30*60, 15*60, 10*60, 5*60, 60 };
+    private int[] pvpReminders;
+    private int[] meetupReminders;
 
     private final List<GameEvent> events = new ArrayList<>();
 
     public GameTimer(Main plugin) {
         this.plugin = plugin;
+    }
+
+    private int[] getPvpReminders() {
+        if (pvpReminders == null) {
+            pvpReminders = parseCsvIntArray(plugin.getConfig().getString("settings.timer.pvp-reminders", "3600,1800,900,600,300,60"));
+        }
+        return pvpReminders;
+    }
+
+    private int[] getMeetupReminders() {
+        if (meetupReminders == null) {
+            meetupReminders = parseCsvIntArray(plugin.getConfig().getString("settings.timer.meetup-reminders", "3600,1800,900,600,300,60"));
+        }
+        return meetupReminders;
+    }
+
+    private int[] parseCsvIntArray(String csv) {
+        return Arrays.stream(csv.split(","))
+                .map(String::trim)
+                .mapToInt(Integer::parseInt)
+                .toArray();
     }
 
     public void start() {
@@ -139,7 +161,7 @@ public class GameTimer extends BukkitRunnable {
         int remaining = pvptime - elapsedSeconds;
         if (remaining < 0) return;
 
-        for (int milestone : pvpReminders) {
+        for (int milestone : getPvpReminders()) {
             if (remaining == milestone) {
                 plugin.utils.broadcast("<blue>PvP On<gray> is in <aqua>" + formatDuration(milestone) + "</aqua>");
             }
@@ -151,7 +173,7 @@ public class GameTimer extends BukkitRunnable {
         int remaining = (pvptime + meetuptime) - elapsedSeconds;
         if (remaining < 0) return;
 
-        for (int milestone : meetupReminders) {
+        for (int milestone : getMeetupReminders()) {
             if (remaining == milestone) {
                 sendMeetupReminder(milestone);
             }

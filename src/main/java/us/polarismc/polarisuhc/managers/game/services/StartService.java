@@ -45,7 +45,7 @@ public class StartService {
         players.forEach(player -> {
             player.getActivePotionEffects().forEach(effect -> player.removePotionEffect(effect.getType()));
             plugin.game.resetPrestartAttributes(player);
-            plugin.utils.delay(300, () -> {
+            plugin.utils.delay(getInvulnerabilityDelayTicks(), () -> {
                 if (!player.isOnline()) return;
                 player.setInvulnerable(false);
                 plugin.utils.message(player, "<red>You are now vulnerable to damage.");
@@ -75,11 +75,19 @@ public class StartService {
         plugin.game.finalizeStep(host);
     }
 
+    private int getPrestartCountdown() {
+        return plugin.getConfig().getInt("settings.start.prestart-countdown", 6);
+    }
+
+    private int getInvulnerabilityDelayTicks() {
+        return plugin.getConfig().getInt("settings.start.invulnerability-delay-ticks", 300);
+    }
+
     private void countdown(Player host) {
         cancelCountdown();
 
         countdownTask = Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
-            int time = 6;
+            int time = getPrestartCountdown();
 
             @Override
             public void run() {

@@ -33,8 +33,12 @@ public class Timber extends BaseScenario {
         processing.remove(uuid);
     }
 
+    private int getCap() {
+        return plugin.getConfig().getInt("settings.timber.cap", 30);
+    }
+
     private void breakChain(Location loc, Player player, int[] count) {
-        int CAP = 30;
+        int CAP = getCap();
         if (count[0] >= CAP) return;
 
         Location blockLoc = loc.clone().add(0, 1, 0);

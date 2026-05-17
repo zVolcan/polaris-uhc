@@ -1,6 +1,14 @@
-# Polaris UHC Plugin
+# Polaris UHC
 
-<img src="./assets/polaris-banner.png" width="600" alt="Banner de polaris.">
+<div align="center">
+  <img src="./assets/polaris-banner.png" width="600" alt="Banner de polaris.">
+</div>
+
+<div align="center">
+<img alt="modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg">
+<img alt="discord-plural" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_vector.svg">
+<img alt="github" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/github_vector.svg">
+</div>
 
 UHC gamemode plugin for Paper 1.21.11 servers. Originally created by [Wixent](https://github.com/Wixent) and made open source.
 
@@ -26,7 +34,7 @@ UHC gamemode plugin for Paper 1.21.11 servers. Originally created by [Wixent](ht
 
 - **Scatter System**: Players are randomly scattered across the world at game start
 - **Team Management**: Create teams, manage colors, emojis, and shared inventories
-- **20+ Scenarios**: Custom game modifiers like CutClean, HasteyBoys, TimeBomb, and more
+- **200+ Scenarios**: Custom game modifiers like CutClean, HasteyBoys, TimeBomb, and more
 - **Border System**: Dynamic border shrinking that intensifies during Meetup
 - **Custom Crafts**: Craftable items like Totems, Golden Heads, Spectral Arrows
 - **PvP & Meetup Phases**: Structured PvP period followed by organized Meetup
